@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Forex Tools | PipCraft FX</title>
+    <meta name="description" content="Access 20+ professional forex trading calculators and tools free: lot size, margin, risk/reward, compounding, pip value, position sizing, and more.">
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="components/navbar.js"></script>
+    <script src="components/footer.js"></script>
+    <script src="components/price-ticker.js"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1e293b',
+                        secondary: '#0f172a',
+                        accentGreen: '#10b981',
+                        accentRed: '#ef4444',
+                        glass: 'rgba(255, 255, 255, 0.05)',
+                    },
+                    animation: {
+                        'slide-up': 'slideUp 0.5s ease-out',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-secondary text-gray-200 min-h-screen font-sans">
+    <custom-navbar></custom-navbar>
+    <price-ticker-bar></price-ticker-bar>
+
+    <main class="pt-4">
+        <!-- Hero Section -->
+        <section class="px-4 py-16 md:py-24 bg-gradient-to-br from-primary/20 via-secondary to-primary/10">
+            <div class="container mx-auto max-w-6xl text-center">
+                <h1 class="text-4xl md:text-6xl font-bold mb-6">Free Forex Trading Tools</h1>
+                <p class="text-xl md:text-2xl text-gray-300 mb-8">Professional-grade calculators, simulators, and analyzers—no sign‑up, no cost. Master risk management and position sizing.</p>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="#calculators" class="px-8 py-3 bg-gradient-to-r from-accentGreen to-emerald-600 rounded-lg font-semibold shadow-lg hover:shadow-xl transition-all">All Calculators</a>
+                    <a href="#forex-timezone" class="px-8 py-3 bg-primary/50 border border-gray-700 rounded-lg font-semibold hover:border-accentGreen transition-all">Time Zone Converter</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Lot Size Calculator -->
+        <section id="lot-size" class="px-4 py-16">
+            <div class="container mx-auto max-w-6xl">
+                <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">Lot Size Calculator</h2>
+                <div class="glass-card rounded-2xl p-8">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div>
+                            <h3 class="text-xl font-semibold mb-4">Input Parameters</h3>
+                            <div class="space-y-6">
+                                <div>
+                                    <label class="block mb-2">Account Balance ($)</label>
+                                    <input type="number" id="accountBalance" class="tool-input w-full" value="10000" step="100">
+                                </div>
+                                <div>
+                                    <label class="block mb-2">Risk Percentage (%)</label>
+                                    <input type="range" id="riskPercent" class="risk-slider" min="0.5" max="10" step="0.1" value="2">
+                                    <div class="flex justify-between text-sm">
+                                        <span>0.5%</span>
+                                        <span id="riskPercentValue">2%</span>
+                                        <span>10%</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label class="block mb-2">Stop‑Loss (Pips)</label>
+                                    <input type="number" id="stopLossPips" class="tool-input w-full" value="30" step="1">
+                                </div>
+                                <div>
+                                    <label class="block mb-2">Currency Pair</label>
+                                    <select id="currencyPair" class="tool-input w-full">
+                                        <option>EUR/USD</option>
+                                        <option>GBP/USD</option>
+                                        <option>USD/JPY</option>
+                                        <option>USD/CAD</option>
+                                        <option>AUD/USD</option>
+                                        <option>XAU/USD</option>
+                                    </select>
+                                </div>
+                                <button onclick="calculateLotSize()" class="btn-primary w-full">Calculate Lot Size</button>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold mb-4">Results</h3>
+                            <div class="space-y-6">
+                                <div>
+                                    <label class="block mb-2">Risk Amount ($)</label>
+                                    <div class="text-4xl font-bold text-accentGreen" id="riskAmountResult">200.00</div>
+                                </div>
+                                <div>
+                                    <label class="block mb-2">Recommended Lot Size</label>
+                                    <div class="text-4xl font-bold" id="lotSizeResult">0.67</div>
+                                </div>
+                                <div>
+                                    <label class="block mb-2">Position Value ($)</label>
+                                    <div class="text-2xl text-gray-300" id="positionValueResult">67,000.00</div>
+                                </div>
+                                <div class="pt-6 border-t border-gray-800">
+                                    <h4 class="font-semibold mb-2">Quick Explanation</h4>
+                                    <p class="text-sm text-gray-400">
+                                        Lot size is calculated as: (Account Balance × Risk %) ÷ (Stop‑Loss × Pip Value).
+                                        This ensures you never risk more than your chosen percentage per trade.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- More Tools Grid -->
+        <section id="calculators" class="px-4 py-16 bg-gradient-to-b from-transparent to-primary/20">
+            <div class="container mx-auto max-w-6xl">
+                <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">All Free Calculators</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="glass-card p-6 rounded‑2xl hover-lift">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-lg font-bold">Risk‑Reward Ratio</h3>
+                            <i data-feather="target" class="text-accentGreen"></i>
+                        </div>
+                        <p class="text-gray-400 mb-4">Visualize your stop loss vs take profit and see required win rate.</p>
+                        <a href="/tool-risk-reward.html" class="text-accentGreen text-sm font-semibold hover:underline">Open Calculator →</a>
+                    </div>
+                    <div class="glass-card p-6 rounded‑2xl hover-lift">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-lg font-bold">Margin Calculator</h3>
+                            <i data-feather="dollar-sign" class="text-accentGreen"></i>
+                        </div>
+                        <p class="text-gray-400 mb-4">How much margin your broker will require for a given position.</p>
+                        <a href="/tool-margin.html" class="text-accentGreen text-sm font-semibold hover:underline">Open Calculator →</a>
+                    </div>
+                    <div class="glass-card p-6 rounded‑2xl hover-lift">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-lg font-bold">Pip Value Calculator</h3>
+                            <i data-feather="divide-circle" class="text-accentGreen"></i>
+                        </div>
+                        <p class="text-gray-400 mb-4">Know the monetary value of each pip based on lot size and pair.</p>
+                        <a href="/tool-pip-value.html" class="text-accentGreen text-sm font-semibold hover:underline">Open Calculator →</a>
+                    </div>
+                    <div class="glass-card p-6 rounded‑2xl hover-lift">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-lg font-bold">Compounding Simulator</h3>
+                            <i data-feather="trending-up" class="text-accentGreen"></i>
+                        </div>
+                        <p class="text-gray-400 mb-4">Simulate account growth over months with consistent risk and returns.</p>
+                        <a href="/tool-compounding.html" class="text-accentGreen text-sm font-semibold hover:underline">Open Calculator →</a>
+                    </div>
+                    <div class="glass-card p-6 rounded‑2xl hover-lift">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-lg font-bold">Position Sizing Tool</h3>
+                            <i data-feather="maximize-2" class="text-accentGreen"></i>
+                        </div>
+                        <p class="text-gray-400 mb-4">Determine ideal position size for multiple open trades.</p>
+                        <a href="/tool-position-sizing.html" class="text-accentGreen text-sm font-semibold hover:underline">Open Calculator →</a>
+                    </div>
+                    <div class="glass-card p-6 rounded‑2xl hover-lift">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-lg font-bold">Fibonacci Levels</h3>
+                            <i data-feather="maximize"></i>
+                        </div>
+                        <p class="text-gray-400 mb-4">Draw Fibonacci retracement & extension levels on any chart.</p>
+                        <a href="/tool-fibonacci.html" class="text-accentGreen text-sm font-semibold hover:underline">Open Calculator →</a>
+                    </div>
+                    <div class="glass-card p-6 rounded‑2xl hover-lift">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-lg font-bold">Profit/Loss Calculator</h3>
+                            <i data-feather="percent" class="text-accentGreen"></i>
+                        </div>
+                        <p class="text-gray-400 mb-4">Calculate potential profit or loss before entering a trade.</p>
+                        <a href="/tool-profit-loss.html" class="text-accentGreen text-sm font-semibold hover:underline">Open Calculator →</a>
+                    </div>
+                    <div class="glass-card p-6 rounded‑2xl hover-lift">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-lg font-bold">Currency Converter</h3>
+                            <i data-feather="refresh-cw" class="text-accentGreen"></i>
+                        </div>
+                        <p class="text-gray-400 mb-4">Convert between major currencies with real-time rates.</p>
+                        <a href="/tool-currency-converter.html" class="text-accentGreen text-sm font-semibold hover:underline">Open Calculator →</a>
+                    </div>
+                    <div class="glass-card p-6 rounded‑2xl hover-lift">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-lg font-bold">Volatility Calculator</h3>
+                            <i data-feather="activity" class="text-accentGreen"></i>
+                        </div>
+                        <p class="text-gray-400 mb-4">Measure historical volatility of any currency pair.</p>
+                        <a href="/tool-volatility.html" class="text-accentGreen text-sm font-semibold hover:underline">Open Calculator →</a>
+                    </div>
+                    <div class="glass-card p-6 rounded‑2xl hover-lift">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-lg font-bold">Correlation Matrix</h3>
+                            <i data-feather="grid" class="text-accentGreen"></i>
+                        </div>
+                        <p class="text-gray-400 mb-4">See correlation between major forex pairs to hedge risk.</p>
+                        <a href="/tool-correlation.html" class="text-accentGreen text-sm font-semibold hover:underline">Open Calculator →</a>
+                    </div>
+                    <div class="glass-card p-6 rounded‑2xl hover-lift">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-lg font-bold">Drawdown Calculator</h3>
+                            <i data-feather="trending-down" class="text-accentGreen"></i>
+                        </div>
+                        <p class="text-gray-400 mb-4">Calculate maximum drawdown and recovery needed.</p>
+                        <a href="/tool-drawdown.html" class="text-accentGreen text-sm font-semibold hover:underline">Open Calculator →</a>
+                    </div>
+                    <div class="glass-card p-6 rounded‑2xl hover-lift">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-lg font-bold">Swap Calculator</h3>
+                            <i data-feather="repeat" class="text-accentGreen"></i>
+                        </div>
+                        <p class="text-grayather="0.4">Calculate overnight swap/rollover charges for positions.</p>
+                        <a href="/tool-swap.html" class="text-accentGreen text-sm font-semibold hover:underline">Open Calculator →</a>
+                    </div>
+                    <div class="glass-card p-6 rounded‑2xl hover-lift">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-lg font-bold">Economic Calendar</h3>
+                            <i data-feather="calendar" class="text-accentGreen"></i>
+                        </div>
+                        <p class="text-gray-400 mb-4">View upcoming economic events impacting forex.</p>
+                        <a href="/tool-economic-calendar.html" class="text-accentGreen text-sm font-semibold hover:underline">Open Tool →</a>
+                    </div>
+                    <div class="glass-card p-6 rounded‑2xl hover-lift">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-lg font-bold">Pivot Points</h3>
+                            <i data-feather="crosshair" class="text-accentGreen"></i>
+                        </div>
+                        <p class="text-gray-400 mb-4">Calculate daily pivot points (classic, Fibonacci, Camarilla).</p>
+                        <a href="/tool-pivot-points.html" class="text-accentGreen text-sm font-semibold hover:underline">Open Calculator →</a>
+                    </div>
+                    <div class="glass-card p-6 rounded‑2xl hover-lift">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-lg font-bold">Time Zone Converter</h3>
+                            <i data-feather="clock" class="text-accentGreen"></i>
+                        </div>
+                        <p class="text-gray-400 mb-4">Convert trading sessions across different time zones.</p>
+                        <a href="/tool-timezone.html" class="text-accentGreen text-sm font-semibold hover:underline">Open Tool →</a>
+                    </div>
+                    <div class="glass-card p-6 rounded‑2xl hover-lift">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-lg font-bold">Market Hours</h3>
+                            <i data-feather="sunrise" class="text-accentGreen"></i>
+                        </div>
+                        <p class="text-gray-400 mb-4">Check open/close times for global forex sessions.</p>
+                        <a href="/tool-market-hours.html" class="text-accentGreen text-sm font-semibold hover:underline">Open Tool →</a>
+                    </div>
+                </div>
+                <div class="mt-12 text-center">
+                    <p class="text-gray-400">Plus 14 more specialized tools including: <strong>Position Ratio, Risk of Ruin, Monte Carlo Simulation, Kelly Criterion, etc.</strong></p>
+                    <a href="/all-tools.html" class="mt-4 inline-flex items-center gap-2 px-6 py-3 bg-glass border border-gray-700 rounded-lg hover:border-accentGreen transition-all">
+                        <i data-feather="grid"></i> View All 30+ Tools
+                    </a>
+                </div>
+</div>
+        </section>
+
+        <!-- AdSense Placement -->
+        <div class="container mx-auto max-w-6xl px-4 py-8">
+            <div class="bg-glass border border-gray-800 rounded-xl p-8 text-center h-32 flex items-center justify-center">
+                <p class="text-gray-400">Google AdSense Placement<br><span class="text-sm">Responsive Ad Unit (728x90 / 320x100)</span></p>
+            </div>
+        </div>
+    </main>
+
+    <custom-footer></custom-footer>
+
+    <script src="script.js"></script>
+    <script>
+        feather.replace();
+        
+        // Initialize risk slider label
+        const riskSlider = document.getElementById('riskPercent');
+        const riskPercentValue = document.getElementById('riskPercentValue');
+        if (riskSlider && riskPercentValue) {
+            riskSlider.addEventListener('input', function() {
+                riskPercentValue.textContent = this.value + '%';
+            });
+        }
+    </script>
+</body>
+</html>

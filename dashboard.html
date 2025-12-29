@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Forex Dashboard | PipCraft FX</title>
+    <meta name="description" content="Real‑time interactive forex dashboard with volatility meter, session timers, economic calendar, and live rate updates. No login required.">
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="components/navbar.js"></script>
+    <script src="components/footer.js"></script>
+    <script src="components/price-ticker.js"></script>
+</head>
+<body class="bg-secondary text-gray-200 min-h-screen font-sans">
+    <custom-navbar></custom-navbar>
+    <price-ticker-bar></price-ticker-bar>
+
+    <main class="pt-4">
+        <!-- Hero Section -->
+        <section class="px-4 py-16 md:py-24 bg-gradient-to-br from-primary/20 to-secondary">
+            <div class="container mx-auto max-w-6xl text-center">
+                <h1 class="text-4xl md:text-6xl font-bold mb-6">Live Forex Dashboard</h1>
+                <p class="text-xl md:text-2xl text-gray-300 mb-8">Real‑time market insights, session timers, volatility indicators, and economic calendar—all in one place.</p>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="#volatility" class="px-6 py-3 bg-glass border border-gray-700 rounded-lg">Volatility Meter</a>
+                    <a href="#session" class="px-6 py-3 bg-glass border border-gray-700 rounded-lg">Session Timers</a>
+                    <a href="#calendar" class="px-6 py-3 bg-glass border border-gray-700 rounded-lg">Economic Calendar</a>
+                    <a href="#advanced-charts" class="px-6 py-3 bg-glass border border-gray-700 rounded-lg">Advanced Charts</a>
+                    <a href="https://fbs.com" target="_blank" class="px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-800 rounded-lg font-semibold text-white shadow-lg hover:shadow-xl transition-all">Trade with FBS</a>
+                </div>
+</div>
+        </section>
+
+        <!-- Real-time Market Overview -->
+        <section id="volatility" class="px-4 py-16">
+            <div class="container mx-auto max-w-6xl">
+                <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">Market Volatility & Activity</h2>
+                <div class="glass-card p-8 rounded-2xl">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div>
+                            <h3 class="text-xl font-semibold mb-4">Volatility Index</h3>
+                            <div class="text-4xl font-bold text-accentGreen" id="volatilityValue">78.5</div>
+                            <div class="mt-4">
+                                <div class="volatility-meter">
+                                    <div class="volatility-fill volatility-high" id="volatilityFill" style="width: 78.5%"></div>
+                                </div>
+                                <div class="flex justify-between text-sm mt-2">
+                                    <span>Low</span>
+                                    <span>Medium</span>
+                                    <span>High</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold mb-4">Top Movers</h3>
+                            <div class="space-y-3">
+                                <div class="flex justify-between items-center">
+                                    <span>GBP/JPY</span>
+                                    <span class="text-accentGreen">+1.42%</span>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span>AUD/USD</span>
+                                    <span class="text-accentRed">-0.87%</span>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span>XAU/USD</span>
+                                    <span class="text-accentGreen">+2.13%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold mb-4">Market Sentiment</h3>
+                            <div class="text-center">
+                                <div class="text-2xl font-bold mb-2">Bullish</div>
+                                <div class="text-sm text-gray-400 mb-4">64% of traders are long EUR/USD</div>
+                                <div class="flex justify-center space-x-2">
+                                    <span class="px-3 py-1 bg-accentGreen/20 text-accentGreen rounded-full text-sm">Risk‑On</span>
+                                    <span class="px-3 py-1 bg-accentRed/20 text-accentRed rounded-full text-sm">USD Weak</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Charts -->
+        <section id="advanced-charts" class="px-4 py-16 bg-gradient-to-b from-transparent to-primary/20">
+            <div class="container mx-auto max-w-6xl">
+                <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">Interactive Chart Playground</h2>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div class="glass-card p-6 rounded-2xl">
+                        <h3 class="text-xl font-semibold mb-4">EUR/USD - H4 Chart</h3>
+                        <div class="chart-placeholder h-64 bg-gradient-to-r from-primary to-secondary rounded-lg flex items-center justify-center">
+                            <div class="text-center">
+                                <p class="text-gray-400">Interactive Chart</p>
+                                <p class="text-sm text-gray-500">(Live data would be integrated here)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="glass-card p-6 rounded-2xl">
+                        <h3 class="text-xl font-semibold mb-4">Volatility Heatmap</h3>
+                        <div class="chart-placeholder h-64 bg-gradient-to-r from-secondary to-primary rounded-lg flex items-center justify-center">
+                            <div class="text-center">
+                                <p class="text-gray-400">Volatility Heatmap</p>
+                                <p class="text-sm text-gray-500">(Real‑time visualization)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <custom-footer></custom-footer>
+
+    <script src="script.js"></script>
+    <script>
+        feather.replace();
+        
+        // Simulate real‑time volatility updates
+        setInterval(() => {
+            const volatility = 60 + Math.random() * 40;
+            const volatilityEl = document.getElementById('volatilityValue');
+            const volatilityFill = document.getElementById('volatilityFill');
+            
+            if (volatilityEl && volatilityFill) {
+                const rounded = volatility.toFixed(1);
+                volatilityEl.textContent = rounded;
+                volatilityFill.style.width = rounded + '%';
+                
+                if (volatility < 70) {
+                    volatilityFill.className = 'volatility-fill volatility-low';
+                } else if (volatility < 85) {
+                    volatilityFill.className = 'volatility-fill volatility-medium';
+                } else {
+                    volatilityFill.className = 'volatility-fill volatility-high';
+                }
+            }
+        }, 5000);
+    </script>
+</body>
+</html>

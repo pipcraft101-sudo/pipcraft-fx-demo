@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PipCraft FX | Free Premium Forex Tools & Education</title>
+    <meta name="description" content="100% Free Forex Trading Platform. Access professional-grade tools, interactive calculators, proven strategies, and comprehensive education. No logins. No payments.">
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="components/navbar.js"></script>
+    <script src="components/footer.js"></script>
+    <script src="components/price-ticker.js"></script>
+    <script src="components/session-status.js"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1e293b', // slate-800
+                        secondary: '#0f172a', // slate-900
+                        accentGreen: '#10b981', // emerald-500
+                        accentRed: '#ef4444', // red-500
+                        glass: 'rgba(255, 255, 255, 0.05)',
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'fade-in-up': 'fadeInUp 0.6s ease-out',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(10px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-secondary text-gray-200 min-h-screen font-sans">
+    <custom-navbar></custom-navbar>
+    <price-ticker-bar></price-ticker-bar>
+
+    <main class="pt-4">
+        <!-- Hero Section -->
+        <section class="relative overflow-hidden px-4 py-16 md:py-24">
+            <div class="absolute inset-0 bg-gradient-to-br from-primary/30 via-transparent to-accentGreen/5"></div>
+            <div class="container mx-auto max-w-6xl relative z-10">
+                <div class="text-center max-w-3xl mx-auto animate-fade-in-up">
+                    <h1 class="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-accentGreen via-gray-300 to-accentGreen bg-clip-text text-transparent">Free Forex Tools & Trading Strategies</h1>
+                    <p class="text-xl md:text-2xl text-gray-300 mb-8">Unlock professional-grade trading resources. <span class="font-semibold text-accentGreen">100% Free. No Logins. No Payments.</span> Powered by knowledge, monetized only by ads.</p>
+                    <div class="flex flex-wrap justify-center gap-4 mb-12">
+                        <a href="/tools.html" class="px-8 py-3 bg-gradient-to-r from-accentGreen to-emerald-600 hover:from-emerald-500 hover:to-accentGreen rounded-lg font-semibold text-secondary shadow-lg hover:shadow-xl transition-all duration-300">Explore Tools</a>
+                        <a href="/strategies.html" class="px-8 py-3 bg-glass border border-gray-700 hover:border-accentGreen rounded-lg font-semibold hover:text-accentGreen transition-all duration-300">View Strategies</a>
+                    </div>
+                </div>
+                <session-status-widget></session-status-widget>
+                <!-- Quick Actions -->
+                <div class="mt-12">
+                    <h3 class="text-2xl font-bold mb-6 text-center">Get Started Instantly</h3>
+                    <div class="flex flex-wrap justify-center gap-4">
+                        <a href="/tools.html#lot-size" class="flex items-center gap-2 px-6 py-3 bg-primary/50 border border-gray-700 rounded-lg hover:border-accentGreen transition-all">
+                            <i data-feather="calculator"></i> Calculate Lot Size
+                        </a>
+                        <a href="/strategies.html#scalping" class="flex items-center gap-2 px-6 py-3 bg-primary/50 border border-gray-700 rounded-lg hover:border-accentGreen transition-all">
+                            <i data-feather="target"></i> Find a Strategy
+                        </a>
+                        <a href="/dashboard.html" class="flex items-center gap-2 px-6 py-3 bg-primary/50 border border-gray-700 rounded-lg hover:border-accentGreen transition-all">
+                            <i data-feather="activity"></i> Live Dashboard
+                        </a>
+                    </div>
+                </div>
+</div>
+        </section>
+        <!-- Ad Placement -->
+        <div class="container mx-auto max-w-6xl px-4 py-8">
+            <div class="bg-glass border border-gray-800 rounded-xl p-8 text-center h-32 flex items-center justify-center">
+                <p class="text-gray-400">Ad Placement<br><span class="text-sm">Responsive Ad Unit (728x90 / 320x100) - Google AdSense, Media.net, etc.</span></p>
+            </div>
+        </div>
+<!-- Navigation Cards -->
+        <section class="px-4 py-16">
+            <div class="container mx-auto max-w-6xl">
+                <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">Your Free Trading Terminal</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <a href="/tools.html" class="group">
+                        <div class="glass-card p-6 rounded-2xl h-full hover:border-accentGreen transition-all duration-300">
+                            <div class="w-14 h-14 bg-gradient-to-br from-accentGreen/20 to-accentGreen/5 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                                <i data-feather="tool" class="text-accentGreen"></i>
+                            </div>
+                            <h3 class="text-xl font-bold mb-3">Interactive Tools</h3>
+                            <p class="text-gray-400">20+ real-time calculators for lot size, risk, margin, P&L, and more.</p>
+                        </div>
+                    </a>
+                    <a href="/strategies.html" class="group">
+                        <div class="glass-card p-6 rounded-2xl h-full hover:border-accentGreen transition-all duration-300">
+                            <div class="w-14 h-14 bg-gradient-to-br from-accentGreen/20 to-accentGreen/5 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                                <i data-feather="trending-up" class="text-accentGreen"></i>
+                            </div>
+                            <h3 class="text-xl font-bold mb-3">Strategy Hub</h3>
+                            <p class="text-gray-400">Proven trading systems filtered by style, timeframe, and difficulty.</p>
+                        </div>
+                    </a>
+                    <a href="/dashboard.html" class="group">
+                        <div class="glass-card p-6 rounded-2xl h-full hover:border-accentGreen transition-all duration-300">
+                            <div class="w-14 h-14 bg-gradient-to-br from-accentGreen/20 to-accentGreen/5 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                                <i data-feather="activity" class="text-accentGreen"></i>
+                            </div>
+                            <h3 class="text-xl font-bold mb-3">Live Dashboard</h3>
+                            <p class="text-gray-400">Market session timers, volatility meters, and interactive chart playground.</p>
+                        </div>
+                    </a>
+                    <a href="/education.html" class="group">
+                        <div class="glass-card p-6 rounded-2xl h-full hover:border-accentGreen transition-all duration-300">
+                            <div class="w-14 h-14 bg-gradient-to-br from-accentGreen/20 to-accentGreen/5 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                                <i data-feather="book-open" class="text-accentGreen"></i>
+                            </div>
+                            <h3 class="text-xl font-bold mb-3">Education Hub</h3>
+                            <p class="text-gray-400">Master forex basics, risk management, psychology, and market structure.</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Strategies -->
+        <section class="px-4 py-16 bg-gradient-to-b from-transparent to-primary/20">
+            <div class="container mx-auto max-w-6xl">
+                <div class="flex justify-between items-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold">Featured Strategies</h2>
+                    <a href="/strategies.html" class="text-accentGreen hover:text-emerald-400 font-semibold flex items-center gap-2">View All <i data-feather="arrow-right"></i></a>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="glass-card rounded-2xl overflow-hidden group hover:border-accentGreen transition-all duration-300">
+                        <div class="h-48 bg-gradient-to-r from-primary to-secondary relative overflow-hidden">
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <div class="text-center p-4">
+                                    <span class="inline-block px-3 py-1 bg-accentGreen/20 text-accentGreen rounded-full text-sm font-semibold mb-2">Price Action</span>
+                                    <h3 class="text-2xl font-bold">London Breakout</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <p class="text-gray-400 mb-4">Capture the initial volatility of the London session using key support/resistance levels.</p>
+                            <div class="flex items-center justify-between">
+                                <span class="px-3 py-1 bg-gray-800 rounded-full text-sm">Swing Trading</span>
+                                <a href="/strategy-london-breakout.html" class="text-accentGreen hover:underline">Learn More →</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="glass-card rounded-2xl overflow-hidden group hover:border-accentGreen transition-all duration-300">
+                        <div class="h-48 bg-gradient-to-r from-secondary to-primary relative overflow-hidden">
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <div class="text-center p-4">
+                                    <span class="inline-block px-3 py-1 bg-accentRed/20 text-accentRed rounded-full text-sm font-semibold mb-2">ICT</span>
+                                    <h3 class="text-2xl font-bold">Silver Bullet</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <p class="text-gray-400 mb-4">A precise scalping method focusing on market structure shifts and order blocks.</p>
+                            <div class="flex items-center justify-between">
+                                <span class="px-3 py-1 bg-gray-800 rounded-full text-sm">Scalping</span>
+                                <a href="/strategy-silver-bullet.html" class="text-accentGreen hover:underline">Learn More →</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="glass-card rounded-2xl overflow-hidden group hover:border-accentGreen transition-all duration-300">
+                        <div class="h-48 bg-gradient-to-r from-primary to-accentGreen/10 relative overflow-hidden">
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <div class="text-center p-4">
+                                    <span class="inline-block px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-sm font-semibold mb-2">Indicators</span>
+                                    <h3 class="text-2xl font-bold">EMA Ribbon Trend</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <p class="text-gray-400 mb-4">Use multiple EMAs to identify strong trending markets and ride the momentum.</p>
+                            <div class="flex items-center justify-between">
+                                <span class="px-3 py-1 bg-gray-800 rounded-full text-sm">Day Trading</span>
+                                <a href="/strategy-ema-ribbon.html" class="text-accentGreen hover:underline">Learn More →</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Popular Tools Preview -->
+        <section class="px-4 py-16">
+            <div class="container mx-auto max-w-6xl">
+                <div class="flex justify-between items-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold">Popular Tools Preview</h2>
+                    <a href="/tools.html" class="text-accentGreen hover:text-emerald-400 font-semibold flex items-center gap-2">All 20+ Tools <i data-feather="arrow-right"></i></a>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="glass-card p-6 rounded-2xl">
+                        <div class="flex items-start justify-between mb-4">
+                            <h3 class="text-xl font-bold">Lot Size Calculator</h3>
+                            <i data-feather="divide-circle" class="text-accentGreen"></i>
+                        </div>
+                        <p class="text-gray-400 mb-6">Calculate optimal position size based on account balance, risk percentage, and stop loss.</p>
+                        <div class="flex items-center text-sm text-gray-500">
+                            <i data-feather="bar-chart-2" class="w-4 h-4 mr-2"></i>
+                            <span>Real-time • Interactive</span>
+                        </div>
+                    </div>
+                    <div class="glass-card p-6 rounded-2xl">
+                        <div class="flex items-start justify-between mb-4">
+                            <h3 class="text-xl font-bold">Risk-to-Reward</h3>
+                            <i data-feather="target" class="text-accentGreen"></i>
+                        </div>
+                        <p class="text-gray-400 mb-6">Visualize your risk vs reward ratio and calculate required win rate for profitability.</p>
+                        <div class="flex items-center text-sm text-gray-500">
+                            <i data-feather="sliders" class="w-4 h-4 mr-2"></i>
+                            <span>Slider Controls</span>
+                        </div>
+                    </div>
+                    <div class="glass-card p-6 rounded-2xl">
+                        <div class="flex items-start justify-between mb-4">
+                            <h3 class="text-xl font-bold">Compounding Simulator</h3>
+                            <i data-feather="repeat" class="text-accentGreen"></i>
+                        </div>
+                        <p class="text-gray-400 mb-6">Project your account growth over months/years with consistent risk and returns.</p>
+                        <div class="flex items-center text-sm text-gray-500">
+                            <i data-feather="trending-up" class="w-4 h-4 mr-2"></i>
+                            <span>Growth Visualization</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Ad Placement -->
+        <div class="container mx-auto max-w-6xl px-4 py-8">
+            <div class="bg-glass border border-gray-800 rounded-xl p-8 text-center h-32 flex items-center justify-center">
+                <p class="text-gray-400">Ad Placement<br><span class="text-sm">In-Article Ad (300x250) - Multiple Ad Networks</span></p>
+            </div>
+        </div>
+</main>
+
+    <custom-footer></custom-footer>
+
+    <script src="script.js"></script>
+    <script>
+        feather.replace();
+        // Initialize animated counters
+        document.addEventListener('DOMContentLoaded', function() {
+            const counters = document.querySelectorAll('.counter');
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-target');
+                const increment = target / 200;
+                let current = 0;
+                const updateCounter = () => {
+                    if (current < target) {
+                        current += increment;
+                        counter.innerText = Math.ceil(current);
+                        setTimeout(updateCounter, 10);
+                    } else {
+                        counter.innerText = target;
+                    }
+                };
+                updateCounter();
+            });
+        });
+</body>
+</html>

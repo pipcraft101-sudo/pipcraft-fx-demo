@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Risk‑Reward Ratio Calculator | PipCraft FX</title>
+    <meta name="description" content="Calculate your risk‑to‑reward ratio, visualize profit zones, and determine required win rate for profitability. Free and no sign‑up.">
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="components/navbar.js"></script>
+    <script src="components/footer.js"></script>
+    <script src="components/price-ticker.js"></script>
+</head>
+<body class="bg-secondary text-gray-200 min-h-screen font-sans">
+    <custom-navbar></custom-navbar>
+    <price-ticker-bar></price-ticker-bar>
+
+    <main class="pt-4">
+        <!-- Hero -->
+        <section class="px-4 py-16 bg-gradient-to-br from-primary/20 to-secondary">
+            <div class="container mx-auto max-w-6xl text-center">
+                <h1 class="text-4xl md:text-6xl font-bold mb-6">Risk‑Reward Ratio Calculator</h1>
+                <p class="text-xl md:text-2xl text-gray-300 mb-8">Determine how much profit you aim for relative to your potential loss. A 1:3 ratio means you risk $1 to make $3.</p>
+            </div>
+        </section>
+
+        <!-- Calculator -->
+        <section class="px-4 py-16">
+            <div class="container mx-auto max-w-6xl">
+                <div class="glass-card rounded-2xl p-8">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div>
+                            <h3 class="text-xl font-semibold mb-4">Input</h3>
+                            <div class="space-y-6">
+                                <div>
+                                    <label class="block mb-2">Stop Loss Distance (pips)</label>
+                                    <input type="number" id="stopLossDistance" class="tool-input w-full" value="20">
+                                </div>
+                                <div>
+                                    <label class="block mb-2">Take Profit Distance (pips)</label>
+                                    <input type="number" id="takeProfitDistance" class="tool-input w-full" value="60">
+                                </div>
+                                <div>
+                                    <label class="block mb-2">Win Rate (%)</label>
+                                    <input type="number" id="winRate" class="tool-input w-full" value="40">
+                                </div>
+                                <button onclick="calculateRR()" class="btn-primary w-full">Calculate</button>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h3 class="text-xl font-semibold mb-4">Results</h3>
+                            <div class="space-y-6">
+                                <div>
+                                    <label>Risk‑Reward Ratio</label>
+                                    <div class="text-4xl font-bold" id="rrResult">1:3</div>
+                                </div>
+                                <div>
+                                    <label>Required Win Rate</label>
+                                    <div class="text-2xl" id="requiredWinRate">25%</div>
+                                </div>
+                                <div>
+                                    <label>Expected Profit per Trade</label>
+                                    <div class="text-2xl text-accentGreen" id="expectedProfit">$2.00</div>
+                                </div>
+                            </div>
+
+                            <div class="mt-8 p-4 bg-primary/20 rounded-lg border border-gray-800">
+                                <h4 class="font-semibold mb-2">Strategy Insight</h4>
+                                <p class="text-sm text-gray-400">With a 1:3 RR, you need only 25% win rate to break even. Higher RR = lower required win rate.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 text-center">
+                        <p class="text-gray-400">Drag the sliders below to adjust risk/reward visually.</p>
+                        <div class="mt-4 relative h-20">
+                            <div class="absolute inset-yThe visual area for slider interaction.
+    <div class="visual-rr" id="visualRR" style="width:100%; height:80px; background: linear-gradient(90deg, #ef4444 25%, #f59e0b 25%, #10b981 25% to 100%); border-radius: 8px;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Explanation -->
+        <section class="px-4 py-16 bg-gradient-to-b from-transparent to-primary/30">
+            <div class="container mx-auto max-w-4xl">
+                <h2 class="text-3xl font-bold mb-6">Understanding Risk‑Reward</h2>
+                <div class="space-y-6">
+                    <p>The risk‑reward ratio (RRR) measures how much you stand to lose versus gain on a trade. It’s calculated by dividing the potential profit (in pips or dollars) by the potential loss.</p>
+                    <div class="glass-card p-6">
+                        <strong>Formula:</strong> RRR = Take Profit Distance / Stop Loss Distance
+                    </div>
+                    <p>Examples:</p>
+                    <ul class="list-disc pl-6 space-y-2">
+                        <li><strong>1:1</strong>: You risk $1 to make $1. Need >50% win rate to be profitable.</li>
+                        <li><strong>1:2</strong>: Risk $1 to make $2. Need >33.3% win rate.</li>
+                        <li><strong>1:3</strong>: Risk $1 to make $3. Need >25% win rate.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <custom-footer></custom-footer>
+
+    <script src="script.js"></script>
+    <script>
+        feather.replace();
+
+        function calculateRR() {
+            const stopLoss = parseFloat(document.getElementById('stopLossDistance').value);
+            const takeProfit = parseFloat(document.getElementById('takeProfitDistance').value);
+            const winRate = parseFloat(document.getElementById('winRate').value) / 100;
+
+            const ratio = takeProfit / stopLoss;
+            document.getElementById('rrResult').textContent = `1:${ratio.toFixed(1)}`;
+
+            const requiredWin = (1 / (1 + ratio)).toFixed(3);
+            document.getElementById('requiredWinRate').textContent = (requiredWin * 100).toFixed(1) + '%';
+
+            const avgGain = takeProfit * 10; // simplified
+            const avgLoss = stopLoss * 10;
+            const expected = winRate * avgGain - (1 - winRate) * avgLoss;
+            document.getElementById('expectedProfit').textContent = formatCurrency(expected);
+
+            saveCalculatorState('riskReward', { stopLoss, takeProfit, winRate });
+        }
+
+        // Initialize with saved values
+        window.addEventListener('load', function() {
+            const saved = loadCalculatorState('riskReward');
+            if (saved) {
+                document.getElementById('stopLossDistance').value = saved.stopLoss || 20;
+                document.getElementById('takeProfitDistance').value = saved.takeProfit || 60;
+                document.getElementById('winRate').value = (saved.winRate * 100) || 40;
+                calculateRR();
+            }
+        });
+    </script>
+</body>
+</html>
